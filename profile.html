@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profil - WalletOne</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#4F46E5',
+                        secondary: '#FF6B6B',
+                        accent: '#10B981',
+                        warning: '#F59E0B',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-fadeInUp { animation: fadeInUp 0.5s ease-out forwards; }
+        .delay-100 { animation-delay: 0.1s; }
+        .delay-200 { animation-delay: 0.2s; }
+        .floating-nav {
+            backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.95);
+        }
+    </style>
+</head>
+<body class="bg-gray-50 min-h-screen pb-24">
+    <!-- Header -->
+    <header class="bg-primary text-white p-4 shadow-lg">
+        <div class="max-w-md mx-auto md:max-w-2xl">
+            <h1 class="text-lg font-black md:text-xl">Profil Saya</h1>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="p-4 max-w-md mx-auto md:max-w-2xl">
+        <!-- Profile Card -->
+        <div class="bg-white rounded-3xl shadow-xl p-6 mb-6 md:p-8 animate-fadeInUp text-center">
+            <div class="w-24 h-24 bg-primary rounded-full mx-auto mb-4 flex items-center justify-center text-white text-3xl font-black">
+                AP
+            </div>
+            <h2 class="text-2xl font-black text-gray-900 mb-1">Andi Pratama</h2>
+            <p class="text-sm text-gray-500 mb-4">andi.pratama@email.com</p>
+            <button onclick="editProfile()" class="bg-primary text-white px-6 py-2 rounded-xl text-sm font-bold hover:bg-opacity-90 transition">
+                Edit Profil
+            </button>
+        </div>
+
+        <!-- Account Info -->
+        <div class="space-y-3 mb-6 animate-fadeInUp delay-100">
+            <h3 class="text-sm font-bold text-gray-700 mb-3">Informasi Akun</h3>
+
+            <div class="bg-white rounded-2xl shadow-md p-4 flex items-center justify-between">
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center">
+                        <svg class="w-5 h-5 text-blue-600" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"/>
+                            <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"/>
+                        </svg>
+                    </div>
+                    <div>
+                        <p class="text-xs text-gray-500">Email</p>
+                        <p class="font-semibold text-gray-900 text-sm">andi.pratama@email.com</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-2xl shadow-md p-4 flex items-center justify-between">
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 bg-green-100 rounded-lg flex items-center justify-center">
+                        <svg class="w-5 h-5 text-green-600" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"/>
+                        </svg>
+                    </div>
+                    <div>
+                        <p class="text-xs text-gray-500">Nomor HP</p>
+                        <p class="font-semibold text-gray-900 text-sm">0812-3456-7890</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-2xl shadow-md p-4 flex items-center justify-between">
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 bg-purple-100 rounded-lg flex items-center justify-center">
+                        <svg class="w-5 h-5 text-purple-600" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" clip-rule="evenodd"/>
+                        </svg>
+                    </div>
+                    <div>
+                        <p class="text-xs text-gray-500">Member Sejak</p>
+                        <p class="font-semibold text-gray-900 text-sm">Januari 2025</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Settings Menu -->
+        <div class="space-y-3 mb-6 animate-fadeInUp delay-200">
+            <h3 class="text-sm font-bold text-gray-700 mb-3">Pengaturan</h3>
+
+            <button onclick="changePassword()" class="bg-white rounded-2xl shadow-md p-4 w-full flex items-center justify-between hover:shadow-lg transition">
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 bg-yellow-100 rounded-lg flex items-center justify-center">
+                        <svg class="w-5 h-5 text-yellow-600" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clip-rule="evenodd"/>
+                        </svg>
+                    </div>
+                    <p class="font-semibold text-gray-900">Ubah Password</p>
+                </div>
+                <svg class="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                </svg>
+            </button>
+
+            <button onclick="biometricSettings()" class="bg-white rounded-2xl shadow-md p-4 w-full flex items-center justify-between hover:shadow-lg transition">
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 bg-red-100 rounded-lg flex items-center justify-center">
+                        <svg class="w-5 h-5 text-red-600" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M6.625 2.655A9 9 0 0119 11a1 1 0 11-2 0 7 7 0 00-9.625-6.492 1 1 0 11-.75-1.853zM4.662 4.959A1 1 0 014.75 6.37 6.97 6.97 0 003 11a1 1 0 11-2 0 8.97 8.97 0 012.25-5.953 1 1 0 011.412-.088z" clip-rule="evenodd"/>
+                            <path fill-rule="evenodd" d="M5 11a5 5 0 1110 0 1 1 0 11-2 0 3 3 0 10-6 0c0 1.677-.345 3.276-.968 4.729a1 1 0 11-1.838-.789A9.964 9.964 0 005 11zm8.921 2.012a1 1 0 01.831 1.145 19.86 19.86 0 01-.545 2.436 1 1 0 11-1.92-.558c.207-.713.371-1.445.49-2.192a1 1 0 011.144-.83z" clip-rule="evenodd"/>
+                        </svg>
+                    </div>
+                    <p class="font-semibold text-gray-900">Keamanan Biometrik</p>
+                </div>
+                <svg class="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                </svg>
+            </button>
+
+            <button onclick="notificationSettings()" class="bg-white rounded-2xl shadow-md p-4 w-full flex items-center justify-between hover:shadow-lg transition">
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 bg-purple-100 rounded-lg flex items-center justify-center">
+                        <svg class="w-5 h-5 text-purple-600" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M10 2a6 6 0 00-6 6v3.586l-.707.707A1 1 0 004 14h12a1 1 0 00.707-1.707L16 11.586V8a6 6 0 00-6-6zM10 18a3 3 0 01-3-3h6a3 3 0 01-3 3z"/>
+                        </svg>
+                    </div>
+                    <p class="font-semibold text-gray-900">Notifikasi</p>
+                </div>
+                <svg class="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                </svg>
+            </button>
+        </div>
+
+        <!-- Help & Support -->
+        <div class="space-y-3 mb-6">
+            <h3 class="text-sm font-bold text-gray-700 mb-3">Bantuan & Dukungan</h3>
+
+            <button onclick="helpCenter()" class="bg-white rounded-2xl shadow-md p-4 w-full flex items-center justify-between hover:shadow-lg transition">
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center">
+                        <svg class="w-5 h-5 text-blue-600" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-8-3a1 1 0 00-.867.5 1 1 0 11-1.731-1A3 3 0 0113 8a3.001 3.001 0 01-2 2.83V11a1 1 0 11-2 0v-1a1 1 0 011-1 1 1 0 100-2zm0 8a1 1 0 100-2 1 1 0 000 2z" clip-rule="evenodd"/>
+                        </svg>
+                    </div>
+                    <p class="font-semibold text-gray-900">Pusat Bantuan</p>
+                </div>
+                <svg class="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                </svg>
+            </button>
+
+            <button onclick="contactUs()" class="bg-white rounded-2xl shadow-md p-4 w-full flex items-center justify-between hover:shadow-lg transition">
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 bg-green-100 rounded-lg flex items-center justify-center">
+                        <svg class="w-5 h-5 text-green-600" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M18 10c0 3.866-3.582 7-8 7a8.841 8.841 0 01-4.083-.98L2 17l1.338-3.123C2.493 12.767 2 11.434 2 10c0-3.866 3.582-7 8-7s8 3.134 8 7zM7 9H5v2h2V9zm8 0h-2v2h2V9zM9 9h2v2H9V9z" clip-rule="evenodd"/>
+                        </svg>
+                    </div>
+                    <p class="font-semibold text-gray-900">Hubungi Kami</p>
+                </div>
+                <svg class="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                </svg>
+            </button>
+        </div>
+
+        <!-- Logout Button -->
+        <button onclick="logout()" class="bg-secondary text-white w-full py-4 rounded-2xl font-bold hover:bg-opacity-90 transition shadow-xl">
+            Keluar
+        </button>
+    </main>
+
+    <!-- Bottom Navigation -->
+    <nav class="fixed bottom-4 left-4 right-4 floating-nav rounded-3xl shadow-2xl border border-gray-200 z-50">
+        <div class="max-w-md mx-auto grid grid-cols-4 md:max-w-2xl">
+            <a href="index.html" class="flex flex-col items-center py-4 text-gray-400 hover:text-primary transition">
+                <svg class="w-6 h-6 mb-1" fill="currentColor" viewBox="0 0 20 20">
+                    <path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z"/>
+                </svg>
+                <span class="text-xs font-medium">Home</span>
+            </a>
+            <a href="history.html" class="flex flex-col items-center py-4 text-gray-400 hover:text-primary transition">
+                <svg class="w-6 h-6 mb-1" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clip-rule="evenodd"/>
+                </svg>
+                <span class="text-xs font-medium">Riwayat</span>
+            </a>
+            <a href="budget.html" class="flex flex-col items-center py-4 text-gray-400 hover:text-primary transition">
+                <svg class="w-6 h-6 mb-1" fill="currentColor" viewBox="0 0 20 20">
+                    <path d="M2 11a1 1 0 011-1h2a1 1 0 011 1v5a1 1 0 01-1 1H3a1 1 0 01-1-1v-5zM8 7a1 1 0 011-1h2a1 1 0 011 1v9a1 1 0 01-1 1H9a1 1 0 01-1-1V7zM14 4a1 1 0 011-1h2a1 1 0 011 1v12a1 1 0 01-1 1h-2a1 1 0 01-1-1V4z"/>
+                </svg>
+                <span class="text-xs font-medium">Analisis</span>
+            </a>
+            <a href="profile.html" class="flex flex-col items-center py-4 text-primary relative">
+                <div class="absolute top-0 left-1/2 transform -translate-x-1/2 w-12 h-1 bg-primary rounded-full"></div>
+                <svg class="w-6 h-6 mb-1" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd"/>
+                </svg>
+                <span class="text-xs font-bold">Profil</span>
+            </a>
+        </div>
+    </nav>
+
+    <script>
+        function editProfile() {
+            Swal.fire({
+                title: 'Edit Profil',
+                html: `
+                    <div style="text-align: left;">
+                        <label style="display: block; font-weight: bold; margin-bottom: 8px;">Nama Lengkap</label>
+                        <input type="text" id="nameInput" value="Andi Pratama" style="width: 100%; padding: 12px; border: 2px solid #e5e7eb; border-radius: 12px; margin-bottom: 15px;">
+
+                        <label style="display: block; font-weight: bold; margin-bottom: 8px;">Email</label>
+                        <input type="email" id="emailInput" value="andi.pratama@email.com" style="width: 100%; padding: 12px; border: 2px solid #e5e7eb; border-radius: 12px; margin-bottom: 15px;">
+
+                        <label style="display: block; font-weight: bold; margin-bottom: 8px;">Nomor HP</label>
+                        <input type="tel" id="phoneInput" value="0812-3456-7890" style="width: 100%; padding: 12px; border: 2px solid #e5e7eb; border-radius: 12px;">
+                    </div>
+                `,
+                showCancelButton: true,
+                confirmButtonText: 'Simpan',
+                cancelButtonText: 'Batal',
+                confirmButtonColor: '#4F46E5',
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Profil Berhasil Diupdate!',
+                        confirmButtonColor: '#10B981',
+                        timer: 2000,
+                    });
+                }
+            });
+        }
+
+        function changePassword() {
+            Swal.fire({
+                title: 'Ubah Password',
+                html: `
+                    <div style="text-align: left;">
+                        <label style="display: block; font-weight: bold; margin-bottom: 8px;">Password Lama</label>
+                        <input type="password" id="oldPass" style="width: 100%; padding: 12px; border: 2px solid #e5e7eb; border-radius: 12px; margin-bottom: 15px;">
+
+                        <label style="display: block; font-weight: bold; margin-bottom: 8px;">Password Baru</label>
+                        <input type="password" id="newPass" style="width: 100%; padding: 12px; border: 2px solid #e5e7eb; border-radius: 12px; margin-bottom: 15px;">
+
+                        <label style="display: block; font-weight: bold; margin-bottom: 8px;">Konfirmasi Password</label>
+                        <input type="password" id="confirmPass" style="width: 100%; padding: 12px; border: 2px solid #e5e7eb; border-radius: 12px;">
+                    </div>
+                `,
+                showCancelButton: true,
+                confirmButtonText: 'Ubah Password',
+                cancelButtonText: 'Batal',
+                confirmButtonColor: '#4F46E5',
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Password Berhasil Diubah!',
+                        confirmButtonColor: '#10B981',
+                    });
+                }
+            });
+        }
+
+        function biometricSettings() {
+            Swal.fire({
+                title: 'Keamanan Biometrik',
+                html: `
+                    <p style="margin-bottom: 20px;">Aktifkan autentikasi sidik jari untuk keamanan ekstra</p>
+                    <div style="text-align: left;">
+                        <label style="display: flex; align-items: center; padding: 15px; background: #f3f4f6; border-radius: 12px; cursor: pointer;">
+                            <input type="checkbox" checked style="width: 20px; height: 20px; margin-right: 10px;">
+                            <span>Aktifkan Sidik Jari</span>
+                        </label>
+                    </div>
+                `,
+                confirmButtonText: 'Simpan',
+                confirmButtonColor: '#4F46E5',
+            });
+        }
+
+        function notificationSettings() {
+            Swal.fire({
+                title: 'Pengaturan Notifikasi',
+                html: `
+                    <div style="text-align: left; padding: 10px;">
+                        <label style="display: flex; align-items: center; padding: 12px; margin-bottom: 10px; background: #f3f4f6; border-radius: 12px; cursor: pointer;">
+                            <input type="checkbox" checked style="width: 20px; height: 20px; margin-right: 10px;">
+                            <span>Transaksi Masuk</span>
+                        </label>
+                        <label style="display: flex; align-items: center; padding: 12px; margin-bottom: 10px; background: #f3f4f6; border-radius: 12px; cursor: pointer;">
+                            <input type="checkbox" checked style="width: 20px; height: 20px; margin-right: 10px;">
+                            <span>Pengeluaran Bulanan</span>
+                        </label>
+                        <label style="display: flex; align-items: center; padding: 12px; background: #f3f4f6; border-radius: 12px; cursor: pointer;">
+                            <input type="checkbox" style="width: 20px; height: 20px; margin-right: 10px;">
+                            <span>Promo & Penawaran</span>
+                        </label>
+                    </div>
+                `,
+                confirmButtonText: 'Simpan',
+                confirmButtonColor: '#4F46E5',
+            });
+        }
+
+        function helpCenter() {
+            Swal.fire({
+                title: 'Pusat Bantuan',
+                html: `
+                    <div style="text-align: left;">
+                        <p style="margin-bottom: 15px;"><strong>FAQ:</strong></p>
+                        <ul style="list-style: none; padding: 0;">
+                            <li style="padding: 10px; background: #f3f4f6; margin-bottom: 8px; border-radius: 8px;">
+                                Cara menambah e-wallet baru?
+                            </li>
+                            <li style="padding: 10px; background: #f3f4f6; margin-bottom: 8px; border-radius: 8px;">
+                                Bagaimana cara transfer antar e-wallet?
+                            </li>
+                            <li style="padding: 10px; background: #f3f4f6; margin-bottom: 8px; border-radius: 8px;">
+                                Lupa password, apa yang harus dilakukan?
+                            </li>
+                        </ul>
+                    </div>
+                `,
+                confirmButtonText: 'Tutup',
+                confirmButtonColor: '#4F46E5',
+            });
+        }
+
+        function contactUs() {
+            Swal.fire({
+                title: 'Hubungi Kami',
+                html: `
+                    <div style="text-align: center; padding: 10px;">
+                        <p style="margin-bottom: 15px;">Kami siap membantu Anda!</p>
+                        <div style="background: #f3f4f6; padding: 15px; border-radius: 12px; margin-bottom: 10px;">
+                            <p style="font-weight: bold;">Email</p>
+                            <p>support@walletone.com</p>
+                        </div>
+                        <div style="background: #f3f4f6; padding: 15px; border-radius: 12px; margin-bottom: 10px;">
+                            <p style="font-weight: bold;">WhatsApp</p>
+                            <p>+62 812-3456-7890</p>
+                        </div>
+                        <div style="background: #f3f4f6; padding: 15px; border-radius: 12px;">
+                            <p style="font-weight: bold;">Jam Operasional</p>
+                            <p>Senin - Jumat: 08:00 - 17:00 WIB</p>
+                        </div>
+                    </div>
+                `,
+                confirmButtonText: 'Tutup',
+                confirmButtonColor: '#4F46E5',
+            });
+        }
+
+        // Simple frontend-only auth check
+        if (!localStorage.getItem('walletone_logged_in')) {
+            window.location.href = 'login.html';
+        }
+
+        // Logout function
+        function logout() {
+            Swal.fire({
+                title: 'Keluar dari Akun?',
+                text: 'Anda akan keluar dari WalletOne',
+                icon: 'question',
+                showCancelButton: true,
+                confirmButtonText: 'Ya, Keluar',
+                cancelButtonText: 'Batal',
+                confirmButtonColor: '#FF6B6B',
+                cancelButtonColor: '#6B7280',
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    // Clear login status
+                    localStorage.removeItem('walletone_logged_in');
+                    localStorage.removeItem('walletone_user');
+
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Berhasil Keluar!',
+                        text: 'Sampai jumpa lagi!',
+                        confirmButtonColor: '#10B981',
+                        timer: 1500,
+                        showConfirmButton: false
+                    }).then(() => {
+                        window.location.href = 'login.html';
+                    });
+                }
+            });
+        }
+    </script>
+</body>
+</html>
